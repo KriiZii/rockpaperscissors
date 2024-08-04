@@ -5,15 +5,26 @@ function getRandomInt(max) {
 function getComputerChoice() {
     let randomnumber = getRandomInt(3);
     if (randomnumber === 0) {
-        return "Rock";
+        return "rock";
     }
     else if (randomnumber === 1) {
-        return "Paper";
+        return "paper";
     }
     else if (randomnumber === 2) {
-        return "Scissors";
+        return "scissors";
     }
     else {
         return "Something went wrong";
+    }
+}
+
+function getHumanChoice() {
+    let choice = prompt("What is your choice human?");
+    if (choice.toLowerCase() === "rock" || choice.toLowerCase() === "paper" || choice.toLowerCase() === "scissors") {
+        return choice.toLowerCase();
+    }
+    else {
+        console.log("Wrong input, try again");
+        getHumanChoice();
     }
 }
