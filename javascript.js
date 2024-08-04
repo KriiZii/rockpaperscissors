@@ -28,3 +28,48 @@ function getHumanChoice() {
         getHumanChoice();
     }
 }
+
+let humanScore = 0;
+let computerScore = 0;
+
+function playRound(humanChoice, computerChoice) {
+    console.log(`Your choice is: ${humanChoice}`);
+    console.log(`The computers choice is: ${computerChoice}`);
+    if (humanChoice === computerChoice) {
+        console.log("Draw! No one gets points");
+        console.log(`You: ${humanScore}, Computer: ${computerScore}`);
+    }
+    else if (humanChoice === "rock" && computerChoice === "paper") {
+        console.log("You lose! Paper beats Rock!");
+        computerScore ++;
+        console.log(`You: ${humanScore}, Computer: ${computerScore}`);
+    }
+    else if (humanChoice === "rock" && computerChoice === "scissors") {
+        console.log("You win! Rock beats Scissors!");
+        humanScore ++;
+        console.log(`You: ${humanScore}, Computer: ${computerScore}`);
+    }
+    else if (humanChoice === "paper" && computerChoice === "scissors") {
+        console.log("You lose! Scissors beat Paper!");
+        computerScore ++;
+        console.log(`You: ${humanScore}, Computer: ${computerScore}`);
+    }
+    else if (humanChoice === "paper" && computerChoice === "rock") {
+        console.log("You win! Paper beats Rock!");
+        humanScore ++;
+        console.log(`You: ${humanScore}, Computer: ${computerScore}`);
+    }
+    else if (humanChoice === "scissors" && computerChoice === "rock") {
+        console.log("You lose! Rock beats Scissors!");
+        computerScore ++;
+        console.log(`You: ${humanScore}, Computer: ${computerScore}`);
+    }
+    else if (humanChoice === "scissors" && computerChoice === "paper") {
+        console.log("You win! Scissors beat Paper!");
+        humanScore ++;
+        console.log(`You: ${humanScore}, Computer: ${computerScore}`);
+    }
+    else {
+        console.log("Something went wrong!");
+    }
+}
