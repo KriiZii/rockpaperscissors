@@ -73,3 +73,26 @@ function playRound(humanChoice, computerChoice) {
         console.log("Something went wrong!");
     }
 }
+
+function playGame() {
+    for(let i = 1; i < 6; i++) {
+        console.log(`Round ${i}`);
+        playRound(getHumanChoice(),getComputerChoice());
+        console.log(" ");
+    }
+}
+
+playGame();
+console.log(`Your final score is: ${humanScore}, computers final score is: ${computerScore}`);
+if (humanScore === computerScore) {
+    console.log("Draw! No one wins");
+}
+else if (humanScore > computerScore) {
+    console.log("Congratulations! You win!");
+}
+else if (humanScore < computerScore) {
+    console.log("You lost! Imagine losing to a computer");
+}
+else {
+    console.log("Something went wrong");
+}
