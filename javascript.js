@@ -91,17 +91,8 @@ function playRound(humanChoice, computerChoice) {
         console.log("Something went wrong!");
         results.textContent = "Something went wrong!";
     }
+    checkScore();
 }
-
-// function playGame() {
-//     for(let i = 1; i < 6; i++) {
-//         console.log(`Round ${i}`);
-//         playRound(getHumanChoice(),getComputerChoice());
-//         console.log(" ");
-//     }
-// }
-
-// playGame();
 
 const container = document.querySelector(".container");
 const rock = document.createElement("button");
@@ -119,28 +110,29 @@ container.appendChild(rock);
 container.appendChild(paper);
 container.appendChild(scissors);
 
-if( humanScore < 5 && computerScore < 5 ) {
-    rock.addEventListener("click", function() { playRound("rock", getComputerChoice()) });
-    paper.addEventListener("click", function() { playRound("paper", getComputerChoice()) });
-    scissors.addEventListener("click", function() { playRound("scissors", getComputerChoice()) });
-}
-else {
-    console.log(`Your final score is: ${humanScore}, computers final score is: ${computerScore}`);
-    results.textContent = `Your final score is: ${humanScore}, computers final score is: ${computerScore}`;
-    if (humanScore === computerScore) {
-        console.log("Draw! No one wins");
-        results.textContent = "Draw! No one wins";
-    }
-    else if (humanScore > computerScore) {
-        console.log("Congratulations! You win!");
-        results.textContent = "Congratulations! You win!";
-    }
-    else if (humanScore < computerScore) {
-        console.log("You lost! Imagine losing to a computer");
-        results.textContent = "You lost! Imagine losing to a computer";
-    }
-    else {
-        console.log("Something went wrong");
-        results.textContent = "Something went wrong";
+rock.addEventListener("click", function() { playRound("rock", getComputerChoice()) });
+paper.addEventListener("click", function() { playRound("paper", getComputerChoice()) });
+scissors.addEventListener("click", function() { playRound("scissors", getComputerChoice()) });
+
+function checkScore() {
+    if (humanScore > 4 || computerScore > 4) {
+        console.log(`Your final score is: ${humanScore}, computers final score is: ${computerScore}`);
+        results.textContent = `Your final score is: ${humanScore}, computers final score is: ${computerScore}`;
+        if (humanScore === computerScore) {
+            console.log("Draw! No one wins");
+            results.textContent = "Draw! No one wins";
+        }
+        else if (humanScore > computerScore) {
+            console.log("Congratulations! You win!");
+            results.textContent = "Congratulations! You win!";
+        }
+        else if (humanScore < computerScore) {
+            console.log("You lost! Imagine losing to a computer");
+            results.textContent = "You lost! Imagine losing to a computer";
+        }
+        else {
+            console.log("Something went wrong");
+            results.textContent = "Something went wrong";
+        }
     }
 }
