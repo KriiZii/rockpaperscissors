@@ -9,3 +9,9 @@ body {
 p {
     font-weight: bold;
 }
+
+.choiceButton {
+    height: 50px;
+    width: 120px;
+    color: black;
+}
