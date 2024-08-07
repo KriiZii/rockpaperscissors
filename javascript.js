@@ -70,7 +70,7 @@ function playRound(humanChoice, computerChoice) {
     else {
         results.textContent = "Something went wrong!";
     }
-    
+
     checkScore();
 }
 
@@ -90,24 +90,26 @@ container.appendChild(rock);
 container.appendChild(paper);
 container.appendChild(scissors);
 
-rock.addEventListener("click", function() { playRound("rock", getComputerChoice()) });
-paper.addEventListener("click", function() { playRound("paper", getComputerChoice()) });
-scissors.addEventListener("click", function() { playRound("scissors", getComputerChoice()) });
+rock.onclick = () => playRound("rock", getComputerChoice());
+paper.onclick = () => playRound("paper", getComputerChoice());
+scissors.onclick = () => playRound("scissors", getComputerChoice());
 
 function checkScore() {
-    if (humanScore > 4 || computerScore > 4) {
+    if (humanScore >= 5 || computerScore >= 5) {
         score.textContent = `Your final score is: ${humanScore}, computers final score is: ${computerScore}`;
         if (humanScore === computerScore) {
             results.textContent = "Draw! No one wins";
         }
-        else if (humanScore > computerScore) {
-            results.textContent = "Congratulations! You win!";
-        }
-        else if (humanScore < computerScore) {
-            results.textContent = "You lost! Imagine losing to a computer";
-        }
-        else {
-            results.textContent = "Something went wrong";
+        else switch (true) {
+            case humanScore > computerScore:
+              results.textContent = "Congratulations! You win!"
+              break
+            case humanScore < computerScore:
+              results.textContent = "You lost! Imagine losing to a computer"
+              break
+            default:
+              results.textContent = "Something went wrong"
+              break
         }
     }
 }
