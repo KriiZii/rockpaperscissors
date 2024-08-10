@@ -83,6 +83,8 @@ const container = document.querySelector(".container")
 const rock = document.createElement("button")
 const paper = document.createElement("button")
 const scissors = document.createElement("button")
+const resetContainer = document.querySelector(".reset")
+const reset = document.createElement("button")
 
 rock.classList.add("choiceButton")
 rock.textContent = "Rock"
@@ -90,18 +92,24 @@ paper.classList.add("choiceButton")
 paper.textContent = "Paper"
 scissors.classList.add("choiceButton")
 scissors.textContent = "Scissors"
+reset.classList.add("resetButton")
+reset.textContent = "Reset"
+
 
 container.appendChild(rock)
 container.appendChild(paper)
 container.appendChild(scissors)
+resetContainer.appendChild(reset)
 
 rock.onclick = () => playRound("rock")
 paper.onclick = () => playRound("paper")
 scissors.onclick = () => playRound("scissors")
+reset.onclick = () => resetFunction()
 
 function checkScore() {
     if (humanScore >= 5 || computerScore >= 5) {
         gameEnd = true
+        score.textContent = ""
         finalscore.textContent = `Your final score is: ${humanScore}, computers final score is: ${computerScore}`
         if (humanScore === computerScore) {
             results.textContent = "Draw! No one wins"
@@ -118,4 +126,15 @@ function checkScore() {
               break
         }
     }
+}
+
+function resetFunction() {
+    humanScore = 0
+    computerScore = 0
+    gameEnd = false
+    human.textContent = ""
+    computer.textContent = ""
+    results.textContent = ""
+    score.textContent = ""
+    finalscore.textContent = ""
 }
